@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<div id="vk_allow_messages_from_community" id="vk_send_message"></div>
+
+<script type="text/javascript" src="https://vk.com/js/api/openapi.js?168"></script>
+
+<script type="text/javascript">
+
+    VK.Widgets.AllowMessagesFromCommunity("vk_allow_messages_from_community", {}, 2158488);
+
+    VK.Widgets.AllowMessagesFromCommunity("vk_send_message", {height: 30}, 1);
+
+    VK.Observer.subscribe("widgets.allowMessagesFromCommunity.allowed", function f(userId) {
+        if (userId != '') {
+            window.location.replace('http://ya.ru');
+        }
+    });
+
+    VK.Observer.subscribe("widgets.allowMessagesFromCommunity.denied", function f(userId) {
+        alert(userId + ' Ошибка');
+    });
+
+</script>
+</body>
+</html>
+
